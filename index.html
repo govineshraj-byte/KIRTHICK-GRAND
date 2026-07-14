@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIRTHICK GRAND 2.0 | Premium Furniture & AI Interior Assistant</title>
+    
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Experience premium handcrafted luxury furniture at Kirthick Grand 2.0. Explore our curated collections, interactive 3D product visualizer, and custom AI interior design assistant.">
+    <meta name="keywords" content="premium furniture, luxury wood, custom walnut dining table, AI interior assistant, 3D furniture viewer, luxury home decor">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+    
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">KIRTHICK</span> GRAND
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#recommendations" class="nav-link">Recommended</a>
+                <a href="#search-section" class="nav-link">Collection</a>
+                <a href="#before-after" class="nav-link">Transformations</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#booking" class="nav-link">Book Visit</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+                
+                <!-- Wishlist Toggle Button -->
+                <button class="icon-btn wishlist-trigger-btn" id="wishlist-toggle" aria-label="View Wishlist">
+                    <i data-lucide="heart"></i>
+                    <span class="badge" id="wishlist-badge">0</span>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="icon-btn mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content container">
+            <span class="hero-subtitle">Handcrafted Solid Wood Masterpieces</span>
+            <h1 class="hero-title">Elevate Your Living Space With Premium Artistry</h1>
+            <p class="hero-description">Where traditional Indian craftsmanship meets modern luxury. Discover timeless Walnut, White Oak, and Teak designs customized by our AI Interior Assistant.</p>
+            <div class="hero-actions">
+                <a href="#search-section" class="btn btn-primary">Explore Collection</a>
+                <button class="btn btn-secondary chat-trigger">Ask AI Assistant</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Recommended Products -->
+    <section class="recommendations-section" id="recommendations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tagline">Personalized For You</span>
+                <h2 class="section-title">AI Recommended Products</h2>
+                <p class="section-desc">Handpicked based on your interactions, favorites, and interior style preferences.</p>
+            </div>
+            
+            <div class="rec-scroll-container">
+                <div class="rec-grid" id="recommended-products-container">
+                    <!-- Dynamic recommendations will load here -->
+                    <div class="skeleton-card rec-skeleton">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text short"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card rec-skeleton">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text short"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                    <div class="skeleton-card rec-skeleton">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-text short"></div>
+                        <div class="skeleton-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Product Search & Filters -->
+    <section class="search-section" id="search-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tagline">Find Your Perfect Fit</span>
+                <h2 class="section-title">Smart Furniture Search</h2>
+                <p class="section-desc">Search instantly by name, category, wood type, pricing, or material composition.</p>
+            </div>
+
+            <!-- Search Control Center -->
+            <div class="search-filter-card">
+                <div class="search-bar-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="product-search-input" placeholder="Search product name, wood type (e.g. Walnut, Oak), material..." aria-label="Search products">
+                </div>
+                
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label for="filter-category">Category</label>
+                        <select id="filter-category">
+                            <option value="all">All Categories</option>
+                            <option value="Living">Living Room</option>
+                            <option value="Dining">Dining Room</option>
+                            <option value="Bedroom">Bedroom</option>
+                            <option value="Office">Office</option>
+                            <option value="Outdoor">Outdoor</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-wood">Wood Type</label>
+                        <select id="filter-wood">
+                            <option value="all">All Woods</option>
+                            <option value="Walnut">Walnut</option>
+                            <option value="White Oak">White Oak</option>
+                            <option value="Teak">Teak</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="filter-price">Max Price</label>
+                        <select id="filter-price">
+                            <option value="all">Any Price</option>
+                            <option value="30000">Under ₹30,000</option>
+                            <option value="60000">Under ₹60,000</option>
+                            <option value="90000">Under ₹90,000</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-outline" id="clear-filters-btn">Reset Filters</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-grid-container">
+                <!-- Skeletons will appear here during filtering/loading -->
+                <div class="skeleton-card">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text short"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text short"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text short"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Comparison Slider -->
+    <section class="before-after-section" id="before-after">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tagline">Visual Transformations</span>
+                <h2 class="section-title">Before & After Interior Slider</h2>
+                <p class="section-desc">Drag the interactive slider to see how premium Kirthick Grand furniture completely reimagines room dynamics.</p>
+            </div>
+
+            <div class="slider-comparison-wrapper">
+                <div class="comparison-container" id="before-after-slider">
+                    <!-- Before Image (Underneath) -->
+                    <div class="image-wrapper before-image-wrapper">
+                        <img src="assets/before.jpg" alt="Old Living Room Before Transformation" loading="lazy">
+                        <span class="label-tag before-tag">Before: Old Living Room</span>
+                    </div>
+                    
+                    <!-- After Image (Overlay, resized dynamically via width) -->
+                    <div class="image-wrapper after-image-wrapper" id="after-image-clip">
+                        <img src="assets/after.jpg" alt="Premium Living Room After Transformation" loading="lazy">
+                        <span class="label-tag after-tag">After: Kirthick Grand Interior</span>
+                    </div>
+                    
+                    <!-- Drag Bar -->
+                    <div class="slider-handle" id="slider-drag-handle">
+                        <div class="handle-button">
+                            <i data-lucide="chevrons-left-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Carousel -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tagline">Testimonials</span>
+                <h2 class="section-title">What Our Patrons Say</h2>
+                <p class="section-desc">Exceptional build quality, heirloom durability, and stunning aesthetics.</p>
+            </div>
+
+            <div class="swiper-container-wrapper">
+                <div class="swiper review-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide review-slide">
+                            <div class="rating-stars animate-stars" data-stars="5">
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                            </div>
+                            <blockquote class="review-text">"The walnut grain details are spectacular. It feels solid, heavy, and sits perfectly as the centerpiece of our home. Worth every rupee."</blockquote>
+                            <cite class="review-author">— Arun R., Bangalore</cite>
+                        </div>
+                        
+                        <div class="swiper-slide review-slide">
+                            <div class="rating-stars animate-stars" data-stars="5">
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                            </div>
+                            <blockquote class="review-text">"Amazing craftsmanship and smooth delivery service. The white oak bench has a radiant finish and completes our dining setup beautifully."</blockquote>
+                            <cite class="review-author">— Divya K., Mumbai</cite>
+                        </div>
+                        
+                        <div class="swiper-slide review-slide">
+                            <div class="rating-stars animate-stars" data-stars="5">
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                                <i data-lucide="star" class="star-icon active"></i>
+                            </div>
+                            <blockquote class="review-text">"The custom wood sizing suggestions from the AI Assistant fit my layout perfectly. Delivery and assembly were seamless."</blockquote>
+                            <cite class="review-author">— Prakash S., Chennai</cite>
+                        </div>
+                    </div>
+                    <!-- Swiper Pagination/Navigation -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pinterest-Style Masonry Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tagline">Design Gallery</span>
+                <h2 class="section-title">Premium Spaces & Layouts</h2>
+                <p class="section-desc">Filter through real interior builds created by our expert designers and wood craftsmen.</p>
+            </div>
+
+            <!-- Gallery Filters -->
+            <div class="gallery-tabs">
+                <button class="gallery-tab-btn active" data-gallery-filter="all">All Spaces</button>
+                <button class="gallery-tab-btn" data-gallery-filter="living">Living Room</button>
+                <button class="gallery-tab-btn" data-gallery-filter="dining">Dining Room</button>
+                <button class="gallery-tab-btn" data-gallery-filter="bedroom">Bedroom</button>
+                <button class="gallery-tab-btn" data-gallery-filter="office">Office</button>
+                <button class="gallery-tab-btn" data-gallery-filter="outdoor">Outdoor</button>
+            </div>
+
+            <!-- Grid container -->
+            <div class="masonry-grid" id="gallery-masonry-grid">
+                <!-- Items populated dynamically or static with dynamic categories -->
+                <div class="masonry-item item-tall" data-space-type="living">
+                    <img src="assets/hero.jpg" alt="Living Room Showroom" loading="lazy">
+                    <div class="masonry-overlay">
+                        <h3>Mid-Century Living Space</h3>
+                        <p>Walnut Accents & Warm Lights</p>
+                    </div>
+                </div>
+                <div class="masonry-item" data-space-type="dining">
+                    <div class="placeholder-gallery-img dining-bg"></div>
+                    <div class="masonry-overlay">
+                        <h3>Luxury Dining Setting</h3>
+                        <p>Quarter Dining Table with Bench</p>
+                    </div>
+                </div>
+                <div class="masonry-item item-wide" data-space-type="bedroom">
+                    <div class="placeholder-gallery-img bedroom-bg"></div>
+                    <div class="masonry-overlay">
+                        <h3>Minimalist Oak Bedroom</h3>
+                        <p>Storage Bed & Wedge Side Tables</p>
+                    </div>
+                </div>
+                <div class="masonry-item" data-space-type="office">
+                    <div class="placeholder-gallery-img office-bg"></div>
+                    <div class="masonry-overlay">
+                        <h3>Executive Walnut Workspace</h3>
+                        <p>Sleek Tapered Desks & Organizers</p>
+                    </div>
+                </div>
+                <div class="masonry-item item-tall" data-space-type="outdoor">
+                    <div class="placeholder-gallery-img outdoor-bg"></div>
+                    <div class="masonry-overlay">
+                        <h3>Teak Deck Retreat</h3>
+                        <p>All-weather loungers & stools</p>
+                    </div>
+                </div>
+                <div class="masonry-item" data-space-type="living">
+                    <div class="placeholder-gallery-img console-bg"></div>
+                    <div class="masonry-overlay">
+                        <h3>Live Edge Console Nook</h3>
+                        <p>Stunning grain highlights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="booking-card">
+                <div class="booking-info">
+                    <span class="booking-tag">Consultation Services</span>
+                    <h2 class="booking-title">Book a Design Consultation</h2>
+                    <p class="booking-desc">Schedule a private session with our senior furniture designers at our flagship showroom or via video call. We will help map your room dimensions, wood species, and select colors.</p>
+                    
+                    <ul class="booking-benefits-list">
+                        <li><i data-lucide="check-circle-2"></i> Private 1-on-1 session</li>
+                        <li><i data-lucide="check-circle-2"></i> Custom CAD room visualization layout</li>
+                        <li><i data-lucide="check-circle-2"></i> Access to raw slab finishes</li>
+                    </ul>
+                </div>
+                
+                <div class="booking-form-wrapper">
+                    <form id="design-appointment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-name">Full Name</label>
+                                <input type="text" id="booking-name" required placeholder="Arun Kumar">
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-phone">Phone Number</label>
+                                <input type="tel" id="booking-phone" required placeholder="+91 98765 43210">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="booking-date">Select Date & Time</label>
+                                <input type="text" id="booking-date" required placeholder="Choose appointment date...">
+                            </div>
+                            <div class="form-group">
+                                <label for="booking-designer">Choose Designer</label>
+                                <select id="booking-designer">
+                                    <option value="karan">Karan Kirthick (Head Craftsman)</option>
+                                    <option value="sneha">Sneha Sen (Senior Interior Designer)</option>
+                                    <option value="rahul">Rahul Nair (Wood Texture Consultant)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-notes">Special Sizing / Design Requests</label>
+                            <textarea id="booking-notes" rows="3" placeholder="Tell us about your room size, preferred wood, etc."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Confirm Appointment Booking</button>
+                    </form>
+                    <div class="booking-confirmation-msg hidden" id="booking-success-message">
+                        <i data-lucide="sparkles" class="success-icon"></i>
+                        <h3>Booking Confirmed!</h3>
+                        <p>We've scheduled your consultation and sent details to your phone. We're looking forward to crafting your space.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <a href="#" class="logo"><span class="logo-accent">KIRTHICK</span> GRAND</a>
+                <p class="footer-about">Creating premium, heirloom-quality solid wood furniture since 2012. Handcrafted to order with a lifetime warranty.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i data-lucide="pinterest"></i></a>
+                    <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Our Collection</h3>
+                <ul>
+                    <li><a href="#search-section">Quarter Dining Table</a></li>
+                    <li><a href="#search-section">Walnut Coffee Table</a></li>
+                    <li><a href="#search-section">Executive Work Desk</a></li>
+                    <li><a href="#search-section">Oak Storage Bed</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact & Visits</h3>
+                <p><strong>Flagship Showroom:</strong><br>12, Grand Galleria, Khader Nawaz Khan Road, Chennai - 600006</p>
+                <p><strong>Support:</strong><br>hello@kirthickgrand.com<br>+91 44 2828 9090</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 KIRTHICK GRAND. All Rights Reserved. Crafted with love & premium code.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Wishlist Drawer -->
+    <div class="wishlist-drawer" id="wishlist-drawer">
+        <div class="wishlist-drawer-overlay" id="wishlist-drawer-overlay"></div>
+        <div class="wishlist-drawer-content">
+            <div class="drawer-header">
+                <h3>Your Premium Wishlist</h3>
+                <button class="icon-btn close-drawer" id="wishlist-close" aria-label="Close Wishlist">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <div class="drawer-body" id="wishlist-items-container">
+                <!-- Items populated by JavaScript -->
+                <p class="empty-wishlist-msg">Your wishlist is currently empty. Start hearting items in our collection!</p>
+            </div>
+            
+            <div class="drawer-footer">
+                <button class="btn btn-secondary btn-block close-drawer-action">Continue Shopping</button>
+                <button class="btn btn-primary btn-block consult-wishlist-btn hidden" id="wishlist-consult-btn">Consult AI on My Wishlist</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D Furniture Preview Modal -->
+    <div class="three-modal" id="three-modal">
+        <div class="three-modal-overlay" id="three-modal-overlay"></div>
+        <div class="three-modal-content">
+            <button class="icon-btn close-modal" id="three-modal-close" aria-label="Close 3D Viewer">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div class="three-grid">
+                <div class="three-canvas-container">
+                    <div id="three-canvas-root"></div>
+                    <div class="three-loading-overlay" id="three-loader">
+                        <div class="loader-spinner"></div>
+                        <p>Generating procedural 3D model with grains...</p>
+                    </div>
+                    <div class="three-instructions">
+                        <i data-lucide="rotate-3d"></i> Left Click + Drag to rotate. Right Click + Drag to pan. Scroll to zoom.
+                    </div>
+                </div>
+                
+                <div class="three-controls-panel">
+                    <span class="prod-badge">Interactive 3D Preview</span>
+                    <h3 id="three-product-title">Walnut Coffee Table</h3>
+                    <p id="three-product-desc" class="prod-description">Modern minimalist coffee table featuring premium organic grains.</p>
+                    
+                    <div class="control-section">
+                        <h4>Select Wood Texture & Finish</h4>
+                        <div class="wood-selection-row">
+                            <button class="wood-select-btn active" data-wood-type="Walnut" style="background-color: #3e2723;">
+                                <span>Walnut</span>
+                            </button>
+                            <button class="wood-select-btn" data-wood-type="Oak" style="background-color: #bcaaa4;">
+                                <span>White Oak</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="control-section">
+                        <h4>Camera Inspector presets</h4>
+                        <div class="camera-presets-row">
+                            <button class="btn btn-outline btn-sm" id="camera-focus-top">Table Top Surface</button>
+                            <button class="btn btn-outline btn-sm" id="camera-focus-legs">Inspect Legs & Joint</button>
+                            <button class="btn btn-outline btn-sm" id="camera-focus-reset">Reset View</button>
+                        </div>
+                    </div>
+
+                    <div class="control-section metadata-section">
+                        <h4>Wood Craft Specs</h4>
+                        <div class="spec-grid">
+                            <div><strong>Joints:</strong> Mortise & Tenon</div>
+                            <div><strong>Lead Time:</strong> 5-6 Weeks</div>
+                            <div><strong>Moisture:</strong> 8% K.D. Treatment</div>
+                            <div><strong>Finish:</strong> Organic Hardwax Oil</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block add-to-wishlist-from-3d" id="wishlist-add-3d-btn">Add to Wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Furniture Chat Assistant Panel -->
+    <div class="ai-chat-panel collapsed" id="ai-chat-panel">
+        <!-- Floating Chat Icon Badge (When collapsed) -->
+        <button class="chat-header-toggle" id="chat-header-bar" aria-label="Toggle Assistant Chat">
+            <span class="avatar-status">
+                <i data-lucide="bot"></i>
+                <span class="status-dot"></span>
+            </span>
+            <div class="header-text-group">
+                <h3>AI Interior Assistant</h3>
+                <span class="typing-status-sub" id="chat-sub-status">Ask about sizes, woods & layouts</span>
+            </div>
+            <button class="icon-btn collapse-chat-btn" id="collapse-chat-icon">
+                <i data-lucide="chevron-up" class="chevron-up-icon"></i>
+                <i data-lucide="chevron-down" class="chevron-down-icon"></i>
+            </button>
+        </button>
+
+        <div class="chat-body-wrapper">
+            <!-- Messages Container -->
+            <div class="chat-messages" id="chat-messages-container">
+                <div class="chat-bubble ai-bubble">
+                    <p>Namaste! I am your Kirthick Grand interior design assistant. How may I help you style your home today?</p>
+                    <span class="chat-time">Just Now</span>
+                </div>
+                <div class="chat-quick-replies">
+                    <button class="quick-reply-btn" data-reply="What is the delivery time?">Delivery Info</button>
+                    <button class="quick-reply-btn" data-reply="Show me products for small rooms">Small Room Ideas</button>
+                    <button class="quick-reply-btn" data-reply="Recommend a dining table under ₹80000">Dining Table Recommendations</button>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator-wrapper hidden" id="typing-indicator">
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span>AI Assistant is thinking...</span>
+            </div>
+
+            <!-- Input Bar -->
+            <form class="chat-input-form" id="chat-message-form">
+                <input type="text" id="chat-message-input" placeholder="Type your room size, budget or wood query..." autocomplete="off">
+                <button type="submit" class="chat-send-btn" aria-label="Send message">
+                    <i data-lucide="send"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Kirthick%20Grand,%20I%20am%20interested%20in%20your%20premium%20solid%20wood%20furniture." class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i data-lucide="message-circle" class="whatsapp-icon"></i>
+        <span class="whatsapp-tooltip">Need Help? Chat on WhatsApp</span>
+    </a>
+
+    <!-- Scroll Up Button -->
+    <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Scroll to Top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- External Script Dependencies (CDN) -->
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- SwiperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Flatpickr (Calendar Date Picker) -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- GSAP for core transitions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Custom Modular JS -->
+    <script src="three-viewer.js"></script>
+    <script src="ai-assistant.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
